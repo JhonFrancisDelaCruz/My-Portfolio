@@ -502,37 +502,82 @@ body {
   border-radius: 999px;
 }
 
-.skillsAndTechnologies {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #000;
-  padding: 40px;
-  gap: 60px;
-  flex-wrap: wrap;
+/* ---------- Skills section ---------- */
+
+/* Glows behind the cards so the glass has something to blur */
+#skills {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
 }
 
+#skills::before,
+#skills::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+#skills::before {
+  width: 320px;
+  height: 320px;
+  left: 12%;
+  top: 22%;
+  background: rgba(34, 195, 34, 0.35);
+}
+
+#skills::after {
+  width: 300px;
+  height: 300px;
+  right: 12%;
+  top: 30%;
+  background: rgba(42, 75, 255, 0.35);
+}
+
+/* Row of cards */
+.skillsAndTechnologies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  padding: 40px 0;
+  color: var(--text);
+}
+
+/* Glass cards: grow with content, "View More" pinned to the bottom */
 .frontEnd, .backEnd, .tools {
-  height: 280px;
-  width: 240px;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
   max-width: 100%;
-  background-color: #ffffff;
+  min-height: 280px;
+  padding: 32px;
   border-radius: 30px;
-  padding: 40px;
-  box-sizing: border-box;
-  
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .frontEnd:hover, .backEnd:hover, .tools:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-color: rgba(34, 195, 34, 0.6);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .skillsAndTechnologies h3 {
   text-align: left;
-  margin: 20 0 15px 0; 
+  margin: 0 0 12px;
   font-size: 1.1rem;
   font-weight: 800;
 }
@@ -540,79 +585,107 @@ body {
 .skillsAndTechnologies p {
   text-align: left;
   margin: 0;
-  font-size: 0.8rem; 
+  font-size: 0.8rem;
   line-height: 1.4;
-  color: #4a4a4a;
-  word-wrap: break-word; 
+  color: var(--text-soft);
+  word-wrap: break-word;
 }
 
 .skillsAndTechnologies a {
-  text-align: right;
-  margin:0;
-  font-size: 0.8rem; 
-  line-height: 14;
-  color: #010fd6;
-  word-wrap: break-word; 
-}
-
-.stocks {
- display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-  gap: 17px;
-  flex-wrap: wrap;
-}
-
-.btn1 {
   display: inline-block;
-  height:8ch ;
-  width: 8ch;
-  padding: 0.7rem 1.6rem;
-  border-radius: 10px;
-  background: rgb(254, 252, 252);
-  box-shadow: inset 0 1px 0 rgb(255, 254, 254);
-  transition: background-color 0.2s ease, border-color 0.1s ease, transform 0.2s ease;
-}
-
-.btn1:hover {
-  border-color: var(--text);
-  transform: translateY(-7px);
-}
-
-/*
-.skills {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 2rem;
-}
-
-.skills__group h3 {
-  margin: 0 0 0.75rem;
-  font-size: 1rem;
-  font-weight: 500;
+  align-self: flex-end;
+  margin: auto 0 0;
+  padding-top: 16px;
+  font-size: 0.8rem;
+  line-height: 1.4;
   color: var(--green);
 }
 
+@media (max-width: 640px) {
+  .frontEnd, .backEnd, .tools {
+    width: 100%;
+    min-height: 0;
+  }
+}
+
+/* ---------- Tech icons: one line, endless scroll ---------- */
+.stock {
+  overflow: hidden;
+  margin-top: 40px;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.stocks {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  padding: 20px 0;
+  animation: scroll-icons 30s linear infinite;
+}
+
+.stock:hover .stocks {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-icons {
+  to { transform: translateX(-50%); }
+}
+
+.btn1 {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin-right: 17px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fefcfc;
+  transition: transform 0.2s ease;
+}
+
+.btn1:hover {
+  transform: translateY(-7px);
+}
+
+.btn1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .btn1 {
+    width: 56px;
+    height: 56px;
+    margin-right: 12px;
+    padding: 10px;
+  }
+
+  .stocks {
+    animation-duration: 22s;
+  }
+}
+
+/* ---------- Footer ---------- */
 .footer {
   padding: 2rem var(--gutter);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 0.85rem;
   color: var(--text-soft);
+  text-align: center;
 }
 
 .footer p {
   margin: 0;
 }
-*/
+
 /* ---------- Centered sections ---------- */
 .section .tags,
 .section .hero__actions {
   justify-content: center;
-}
-
-.footer {
-  text-align: center;
 }
 
 /* ---------- Reduced motion ---------- */
@@ -620,6 +693,8 @@ body {
   html { scroll-behavior: auto; }
   .btn { transition: none; }
   .btn:hover { transform: none; }
+  .btn1 { transition: none; }
+  .btn1:hover { transform: none; }
   .hero__cursor { animation: none; }
 
   .js .hero__text > *,
@@ -629,4 +704,16 @@ body {
     transform: none;
     transition: none;
   }
+
+  /* Static, wrapping icon grid instead of the scrolling strip */
+  .stocks {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .stocks .btn1 { margin-right: 0; }
+  .stocks .btn1[aria-hidden="true"] { display: none; }
 }
