@@ -1,22 +1,19 @@
-// Respect people who ask their device to reduce motion
+
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* 1. Load-in sequence ---------------------------------------------------- */
 window.addEventListener("load", () => {
   requestAnimationFrame(() => {
     document.documentElement.classList.add("is-loaded");
   });
 });
 
-/* 2. Rotating role text (typing effect) ---------------------------------- */
-// Edit the roles in the data-roles attribute in index.html, separated by "|"
 const typedEl = document.getElementById("typed");
 
 if (typedEl && !reduceMotion) {
   const roles = typedEl.dataset.roles.split("|");
   let roleIndex = 0;
   let charIndex = roles[0].length;
-  let deleting = true; // the first role is already on screen, so start by erasing it
+  let deleting = true;
 
   function type() {
     const current = roles[roleIndex];
@@ -38,17 +35,16 @@ if (typedEl && !reduceMotion) {
 
       if (charIndex === current.length) {
         deleting = true;
-        setTimeout(type, 2200); // pause on the finished word
+        setTimeout(type, 2200);
         return;
       }
       setTimeout(type, 70);
     }
   }
 
-  setTimeout(type, 3000); // let the first role show before it starts changing
+  setTimeout(type, 3000); 
 }
 
-/* 3. Subtle mouse parallax on the title and photo (desktop only) --------- */
 const hero = document.querySelector(".hero");
 const title = document.querySelector(".hero__title");
 const photo = document.querySelector(".hero__photo");
