@@ -5,7 +5,7 @@
   --green-btn: #2fb52f;
   --text-soft: #d6dbd3;
   --text: #ffffff;
-  --glow: rgba(42, 75, 255, 0.55);
+  --glow: rgba(7, 20, 93, 0.55);
   --gutter: clamp(1.5rem, 9vw, 8rem);
   --nav-h: 3.5rem;
 
@@ -164,8 +164,6 @@ body {
   backdrop-filter: blur(16px) saturate(150%);
 }
 
-
-
 .hero__greeting {
   margin: 0;
   font-size: 1.2rem;
@@ -271,7 +269,7 @@ body {
 
 .hero__title {
   position: absolute;
-  top: 6vh;
+  top: 8vh;
   left: 33%;
   margin: 0;
   z-index: 2;
