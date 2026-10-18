@@ -521,22 +521,6 @@ body {
   pointer-events: none;
 }
 
-#skills::before {
-  width: 320px;
-  height: 320px;
-  left: 12%;
-  top: 22%;
-  background: rgba(34, 195, 34, 0.35);
-}
-
-#skills::after {
-  width: 300px;
-  height: 300px;
-  right: 12%;
-  top: 30%;
-  background: rgba(42, 75, 255, 0.35);
-}
-
 /* Row of cards */
 .skillsAndTechnologies {
   display: flex;
@@ -705,7 +689,6 @@ body {
     transition: none;
   }
 
-  /* Static, wrapping icon grid instead of the scrolling strip */
   .stocks {
     animation: none;
     width: auto;
