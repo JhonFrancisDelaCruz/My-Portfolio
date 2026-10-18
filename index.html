@@ -185,6 +185,58 @@
       </div>
     </section>
 
+    <!--
+    Old skills layout (kept for reference)
+
+    <section class="section">
+      <div class="skills">
+        <div class="skills__group">
+          <h3>Strongest</h3>
+          <ul class="tags">
+            <li>Java</li>
+            <li>Problem solving</li>
+            <li>Object-oriented programming</li>
+            <li>Data structures</li>
+          </ul>
+        </div>
+
+        <div class="skills__group">
+          <h3>Frameworks</h3>
+          <ul class="tags">
+            <li>JavaFX</li>
+            <li>Spring Boot</li>
+            <li>Laravel</li>
+            <li>Tailwind CSS</li>
+          </ul>
+        </div>
+
+        <div class="skills__group">
+          <h3>Design and web</h3>
+          <ul class="tags">
+            <li>Figma</li>
+            <li>HTML</li>
+            <li>CSS</li>
+          </ul>
+        </div>
+
+        <div class="skills__group">
+          <h3>Certification</h3>
+          <ul class="tags">
+            <li>NC II in Networking</li>
+          </ul>
+        </div>
+
+        <div class="skills__group">
+          <h3>Learning</h3>
+          <ul class="tags">
+            <li>Android app development</li>
+            <li>iOS app development</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    -->
+
     <section id="projects" class="section">
       <h2 class="section__title">Projects</h2>
       <p>Currently building. Projects will be added soon.</p>
@@ -215,6 +267,60 @@
       var update = function () { nav.classList.toggle("is-scrolled", window.scrollY > 20); };
       update();
       window.addEventListener("scroll", update, { passive: true });
+    })();
+  </script>
+  <script>
+    /* Highlight the nav link of the section that is currently in view */
+    (function () {
+      var links = Array.prototype.slice.call(document.querySelectorAll('.nav__links a[href^="#"]'));
+      var items = links.map(function (a) {
+        var el = document.getElementById(a.getAttribute("href").slice(1));
+        return el ? { link: a, el: el } : null;
+      }).filter(Boolean);
+      if (!items.length) return;
+
+      var current = null;
+      var ticking = false;
+
+      var setActive = function (link) {
+        if (link === current) return;
+        current = link;
+        links.forEach(function (a) {
+          var on = a === link;
+          a.classList.toggle("is-active", on);
+          if (on) a.setAttribute("aria-current", "location");
+          else a.removeAttribute("aria-current");
+        });
+      };
+
+      var update = function () {
+        ticking = false;
+        var y = window.scrollY;
+        var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = maxScroll > 0 ? Math.min(Math.max(y / maxScroll, 0), 1) : 0;
+
+        /* Reading line sits at 35% of the screen and slides to the bottom as you
+           reach the end of the page, so short last sections (Projects, Contact) still get their turn */
+        var line = y + window.innerHeight * (0.35 + 0.65 * progress);
+
+        var active = items[0];
+        items.forEach(function (it) {
+          if (it.el.getBoundingClientRect().top + y <= line) active = it;
+        });
+        setActive(active.link);
+      };
+
+      var onScroll = function () {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(update);
+        }
+      };
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+      window.addEventListener("load", update);
+      update();
     })();
   </script>
   <script>

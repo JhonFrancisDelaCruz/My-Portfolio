@@ -92,6 +92,12 @@ body {
   border-bottom-color: var(--green);
 }
 
+/* Link of the section currently in view (set by the scroll script) */
+.nav__links a.is-active {
+  color: var(--green);
+  border-bottom-color: var(--green);
+}
+
 .nav a:focus-visible,
 .hero__socials a:focus-visible {
   outline: 2px solid var(--green);
@@ -770,21 +776,6 @@ body {
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 [data-theme="light"] {
   color-scheme: light;
