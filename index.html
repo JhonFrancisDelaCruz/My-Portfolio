@@ -7,7 +7,7 @@
   <meta name="description" content="Portfolio of Jhon Francis Dela Cruz, an aspiring full stack developer.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bungee&family=Kumbh+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Jaro:opsz@6..72&family=Kumbh+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -16,10 +16,14 @@
     <div class="hero__circle" aria-hidden="true"></div>
 
     <nav class="nav" aria-label="Main">
-      <a href="#home">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+      <a class="nav__logo" href="#home">Francis.dev</a>
+      <ul class="nav__links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
 
     <div class="hero__text">
@@ -29,10 +33,10 @@
         <span id="typed" aria-hidden="true" data-roles="Aspiring Full Stack Developer|Android App Learner|Java Programmer|Web Builder">Aspiring Full Stack Developer</span><span class="hero__cursor" aria-hidden="true"></span>
       </p>
       <p class="hero__bio">
-        I'm a developer in progress who enjoys solving problems through code and
-        turning ideas into real projects. With Java as my strongest language, I'm
-        expanding my skills in web and mobile development, learning by building,
-        experimenting, and improving with every project.
+       I'm an aspiring software engineer who enjoys solving problems through code
+       and turning ideas into real projects. With Java as my strongest language,
+       I'm expanding my skills in web development and mobile app development, learning
+       by building, experimenting, and improving with every project.
       </p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="#skills">View My Skills</a>
@@ -54,9 +58,18 @@
   </header>
 
   <main>
-    <section id="projects" class="section">
-      <h2 class="section__title">Projects</h2>
-      <p>Currently building. Projects will be added here.</p>
+    <section id="about" class="section">
+      <h2 class="section__title">About</h2>
+      <p class="section__intro">
+        I'm Jhon Francis Dela Cruz, an aspiring software engineer with a strong foundation
+        in Java and object-oriented programming. I'm expanding my skills in web development
+        using PHP, Laravel, JavaScript, Tailwind CSS, and MySQL while exploring Android app
+        development. Through projects like a Library Management System and a business
+        management platform, I'm continuously improving my problem-solving skills and
+        learning to build practical, user-friendly applications. My goal is to grow as
+        a software engineer by turning ideas into reliable software, one project at a
+        time.
+      </p>
     </section>
 
     <section id="skills" class="section">
@@ -110,6 +123,11 @@
       </div>
     </section>
 
+    <section id="projects" class="section">
+      <h2 class="section__title">Projects</h2>
+      <p>Currently building. Projects will be added here.</p>
+    </section>
+
     <section id="contact" class="section">
       <h2 class="section__title">Contact</h2>
       <p class="section__intro">Want to work together, or just say hello? Send me a message.</p>
@@ -127,6 +145,16 @@
     <p>Jhon Francis Dela Cruz</p>
   </footer>
 
+  <script>
+    /* Darken the glass navbar a little once the page scrolls */
+    (function () {
+      var nav = document.querySelector(".nav");
+      if (!nav) return;
+      var update = function () { nav.classList.toggle("is-scrolled", window.scrollY > 20); };
+      update();
+      window.addEventListener("scroll", update, { passive: true });
+    })();
+  </script>
   <script src="script.js" defer></script>
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
