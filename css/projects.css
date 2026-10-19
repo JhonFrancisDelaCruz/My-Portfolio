@@ -1,10 +1,13 @@
-:root {
-  --card-bg: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
-  --card-border: rgba(255, 255, 255, 0.14);
-  --text: #e9eef1;
-  --muted: #b4c0ca;
-  --accent: #3ddc97; /* change this to match your green circle */
-  --accent-rgb: 61, 220, 151; /* same color as above, as r, g, b */
+/* ==========================================================
+   Project cards
+   Uses the site's own variables from style.css (--text, --text-soft,
+   --green), so dark and light mode both work. Nothing in :root is
+   redefined here, so it can't override your theme.
+   ========================================================== */
+
+.projects-grid,
+.project-card {
+  --accent-rgb: 34, 195, 34; /* same as --green (#22c322) */
 }
 
 /* ---------- Grid that holds and centers the cards ---------- */
@@ -18,7 +21,6 @@
   gap: 1.5rem;
   max-width: 1100px;
   margin-inline: auto;
-  padding-inline: 1rem;
 }
 
 /* Soft green glow behind the cards, so the glass has something to blur */
@@ -43,24 +45,25 @@
   max-width: 340px;
   margin-inline: auto;
   overflow: hidden;
-  background: var(--card-bg);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  backdrop-filter: blur(14px) saturate(140%);
-  border: 1px solid var(--card-border);
+  text-align: left; /* sections are centered; card text reads better left */
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03));
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 15px;
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15); /* light edge on top */
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(var(--accent-rgb), 0.6);
+  border-color: rgba(var(--accent-rgb), 0.65);
   box-shadow:
-    0 14px 40px rgba(0, 0, 0, 0.45),
+    0 20px 50px rgba(0, 0, 0, 0.45),
     0 0 24px rgba(var(--accent-rgb), 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 /* Screenshot: always the same shape, never stretched */
@@ -90,6 +93,8 @@
 .project-card h3 {
   margin: 0;
   font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
   color: var(--text);
 }
 
@@ -97,7 +102,7 @@
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--muted);
+  color: var(--text-soft);
 }
 
 /* ---------- Tech tags ---------- */
@@ -111,7 +116,7 @@
   padding: 0.25rem 0.7rem;
   border-radius: 999px;
   font-size: 0.78rem;
-  color: var(--accent);
+  color: var(--green);
   background: rgba(var(--accent-rgb), 0.12);
   border: 1px solid rgba(var(--accent-rgb), 0.4);
 }
@@ -143,15 +148,15 @@
 }
 
 .project-links a:first-child:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+  color: var(--green);
+  border-color: var(--green);
 }
 
-/* Live Demo = filled green button */
+/* Live demo = filled green button */
 .project-links a:last-child {
-  color: #0d1114;
-  background: var(--accent);
-  border: 1px solid var(--accent);
+  color: #07140a;
+  background: var(--green);
+  border: 1px solid var(--green);
 }
 
 .project-links a:last-child:hover {
@@ -159,14 +164,57 @@
 }
 
 .project-links a:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--green);
   outline-offset: 2px;
 }
 
+/* ---------- Light theme ---------- */
+[data-theme="light"] .projects-grid,
+[data-theme="light"] .project-card {
+  --accent-rgb: 22, 128, 22; /* same as --green in light mode (#178a17) */
+}
+
+[data-theme="light"] .projects-grid::before {
+  opacity: 0.6;
+}
+
+[data-theme="light"] .project-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.45));
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .project-card:hover {
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(var(--accent-rgb), 0.25);
+}
+
+[data-theme="light"] .project-card img {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .project-links a:first-child {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .project-links a:last-child {
+  color: #fff;
+}
+
+/* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .project-card,
   .project-card img,
   .project-links a {
     transition: none;
+  }
+
+  .project-card:hover,
+  .project-card:hover img {
+    transform: none;
   }
 }
