@@ -32,7 +32,6 @@ body {
   line-height: 1.6;
 }
 
-/* ---------- Navbar ---------- */
 .nav {
   position: fixed;
   top: 0;
@@ -142,7 +141,7 @@ body {
   height: 32vw;
   right: 8%;
   top: 20%;
-  background: rgba(42, 75, 255, 0.35);
+  background: rgba(42, 74, 255, 0.352);
 }
 
 .hero::after {

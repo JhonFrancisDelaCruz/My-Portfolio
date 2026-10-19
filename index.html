@@ -19,7 +19,10 @@
       document.documentElement.setAttribute("data-theme", "dark");
     }
   </script>
-  <link rel="stylesheet" href="style.css">
+  <!-- CSS STYLE SHEET -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/projects.css">
+
 </head>
 <body>
   <header class="hero" id="home">
@@ -109,6 +112,7 @@
             <li>CSS</li>
             <li>JavaScript</li>
             <li>Tailwind CSS</li>
+             <li>React</li>
           </ul>
         </article>
 
@@ -167,6 +171,7 @@
     <a class="btn1"><img src="assets/icons/git.jpg" alt="Git"></a>
     <a class="btn1"><img src="assets/icons/github.jpg" alt="GitHub"></a>
     <a class="btn1"><img src="assets/icons/figma.jpg" alt="Figma"></a>
+    <a class="btn1"><img src="assets/icons/react.jpg" alt="React"></a>
 
     <!-- Duplicate set for seamless scrolling -->
     <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/html.jpg" alt=""></a>
@@ -181,13 +186,46 @@
     <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/git.jpg" alt=""></a>
     <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/github.jpg" alt=""></a>
     <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/figma.jpg" alt=""></a>
+     <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/react.jpg" alt=""></a>
   </div>
 </div>
     </section>
 
     <section id="projects" class="section">
       <h2 class="section__title">Projects</h2>
-      <p>Currently building. Projects will be added soon.</p>
+      <p>Currently building more projects. Will be added soon.</p>
+
+<div class="project-card">
+    <img
+        src="assets/projects/expense-tracker.png"
+        alt="Expense and Budget Tracker dashboard"
+    >
+    <div class="project-content">
+        <h3>Expense & Budget Tracker</h3>
+
+        <p>
+            A responsive personal finance application
+            for tracking income, managing expenses,
+            and monitoring budgets.
+        </p>
+
+        <div class="project-tech">
+            <span>React</span>
+            <span>Tailwind CSS</span>
+            <span>Vite</span>
+        </div>
+
+        <div class="project-links">
+            <a href="https://github.com/JhonFrancisDelaCruz/Expense-Tracker.git"
+               target="_blank"
+               rel="noopener noreferrer">
+                GitHub
+            </a>
+            <a href="https://expense-tracker-eta-drab.vercel.app/" target="_blank" rel="noopener noreferrer">View</a>
+        </div>
+    </div>
+</div>
+
     </section>
 
     <section id="contact" class="section">
