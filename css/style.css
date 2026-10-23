@@ -5,7 +5,7 @@
   --green-btn: #2fb52f;
   --text-soft: #d6dbd3;
   --text: #ffffff;
-  --glow: rgba(4, 20, 114, 0.55);
+  --glow: rgba(0, 2, 11, 0.55);
   --gutter: clamp(1.5rem, 9vw, 8rem);
   --nav-h: 3.5rem;
 
@@ -141,7 +141,7 @@ body {
   height: 32vw;
   right: 8%;
   top: 20%;
-  background: rgba(42, 74, 255, 0.352);
+  background:   rgba(42, 74, 255, 0.352);
 }
 
 .hero::after {
@@ -534,9 +534,7 @@ body {
   border-radius: 28px;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03));
   border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  box-shadow:0 12px 40px rgba(0, 0, 0, 0.35),inset 0 1px 0 rgba(255, 255, 255, 0.22);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
   backdrop-filter: blur(16px) saturate(150%);
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -544,9 +542,9 @@ body {
 
 .skillCard > * { position: relative; }
 
-.skillCard--front { --accent-rgb: 34, 195, 34; }
-.skillCard--back  { --accent-rgb: 91, 124, 255; }
-.skillCard--tools { --accent-rgb: 167, 139, 250; }
+.skillCard--front { --accent-rgb: 47, 181, 47; }
+.skillCard--back  { --accent-rgb: 245, 246, 249; }
+.skillCard--tools { --accent-rgb: 161, 124, 43; }
 
 .skillCard:hover {
   transform: translateY(-6px);
@@ -561,22 +559,6 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-}
-
-.skillCard__icon {
-  display: grid;
-  place-items: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
-  color: rgb(var(--accent-rgb));
-  background: rgba(var(--accent-rgb), 0.14);
-  border: 1px solid rgba(var(--accent-rgb), 0.4);
-}
-
-.skillCard__icon svg {
-  width: 22px;
-  height: 22px;
 }
 
 .skillCard__tag {
@@ -608,7 +590,7 @@ body {
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.509);
 }
 
 .skillCard__chips {
@@ -629,11 +611,11 @@ body {
   color: var(--text);
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
+  border-radius: 20px;
 }
 
 .skillCard__chips li::before {
-  content: "";
+  content:"";
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -784,7 +766,7 @@ body {
   --green-btn: #1f9d1f;
   --text-soft: #425042;
   --text: #14211a;
-  --glow: rgba(60, 90, 255, 0.25);
+  --glow: rgba(1, 4, 18, 0.25);
 }
 
 /* Navbar */
@@ -824,7 +806,7 @@ body {
 /* Buttons */
 [data-theme="light"] .btn {
   background: rgba(255, 255, 255, 0.6);
-  border-color: rgba(0, 0, 0, 0.15);
+  border-color: rgba(8, 8, 8, 0.15);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
@@ -856,9 +838,17 @@ body {
 }
 
 /* Skill cards */
-[data-theme="light"] .skillCard--front { --accent-rgb: 22, 128, 22; }
-[data-theme="light"] .skillCard--back  { --accent-rgb: 52, 84, 214; }
-[data-theme="light"] .skillCard--tools { --accent-rgb: 109, 76, 214; }
+
+
+
+
+
+
+
+
+[data-theme="light"] .skillCard--front { --accent-rgb: 47, 181, 47; }
+[data-theme="light"] .skillCard--back  { --accent-rgb: 8, 20, 9; }
+[data-theme="light"] .skillCard--tools { --accent-rgb: 161, 124, 43; }
 
 [data-theme="light"] .skillCard {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.45));
