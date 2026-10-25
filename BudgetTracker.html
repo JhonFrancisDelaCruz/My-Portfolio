@@ -1,23 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expense & Budget Tracker | Francis Dela Cruz</title>
+  <meta name="description" content="Expense & Budget Tracker: a responsive personal finance app for tracking income, managing expenses and monitoring monthly budgets. Built with React, Tailwind CSS and Vite.">
 
-    <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Jaro:opsz@6..72&family=Kumbh+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Apply the saved theme before the page paints (same as index.html) -->
+  <script>
+    try {
+      var saved = localStorage.getItem("theme");
+      document.documentElement.setAttribute("data-theme", saved === "light" ? "light" : "dark");
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  </script>
+
+  <!-- CSS STYLE SHEET -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/projectsPage.css">
 </head>
 <body>
-    <a href="index.html"><Button>Back</Button></a>
-    <h1>Expense & Budget Tracker</h1>
-    <p>A responsive personal finance application for tracking income, managing expenses, and monitoring budgets.</p>
-    <h3>Tools</h3>
-   <div class="project-tech">
+  <nav class="nav" aria-label="Main">
+    <a class="nav__logo" href="index.html#home">Francis.dev</a>
+    <div class="nav__right">
+      <ul class="nav__links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#projects" class="is-active" aria-current="page">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+        <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="project-page">
+    <header>
+      <p class="project-page__eyebrow">Project</p>
+      <h1>Expense &amp; Budget Tracker</h1>
+      <p class="project-page__lead">
+        A responsive personal finance application for tracking income,
+        managing expenses, and monitoring budgets.
+      </p>
+      <div class="project-page__actions">
+        <a class="btn btn--primary" href="https://expense-tracker-eta-drab.vercel.app/" target="_blank" rel="noopener noreferrer">View live project</a>
+        <a class="btn" href="https://github.com/JhonFrancisDelaCruz/Expense-Tracker" target="_blank" rel="noopener noreferrer">Source code</a>
+      </div>
+
+      <figure class="project-page__shot">
+        <img src="assets/projects/expense-tracker.png" alt="Expense and Budget Tracker dashboard showing balance, income, expenses and recent transactions">
+      </figure>
+    </header>
+
+    <section aria-labelledby="features-title">
+      <h2 id="features-title">Features</h2>
+      <ul class="project-page__features">
+        <li><strong>Dashboard</strong>Monthly balance, income and expenses at a glance.</li>
+        <li><strong>Transactions</strong>Add, filter and delete entries, with CSV export.</li>
+        <li><strong>Budgets</strong>Set a monthly cap and get an alert as you near it.</li>
+        <li><strong>Analytics</strong>Category breakdown and month-by-month spending bars.</li>
+        <li><strong>Light &amp; dark themes</strong>Follows your system setting, or choose your own.</li>
+        <li><strong>Works on any screen</strong>Sidebar on desktop, bottom tab bar on phones.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="tools-title">
+      <h2 id="tools-title">Tools</h2>
+      <div class="project-tech">
         <ul>
-            <li>React</li>
-            <li>Tailwind CSS</li>
-            <li>Vite</li>
+          <li>React</li>
+          <li>Tailwind CSS</li>
+          <li>Vite</li>
         </ul>
-        </div>
-        <a href="https://expense-tracker-eta-drab.vercel.app/">Project Link</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Jhon Francis Dela Cruz</p>
+  </footer>
+
+  <script>
+    /* Darken the glass navbar a little once the page scrolls */
+    (function () {
+      var nav = document.querySelector(".nav");
+      if (!nav) return;
+      var update = function () { nav.classList.toggle("is-scrolled", window.scrollY > 20); };
+      update();
+      window.addEventListener("scroll", update, { passive: true });
+    })();
+  </script>
+  <script>
+    /* Light / dark mode toggle (remembers the choice, shared with index.html) */
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById("themeToggle");
+      if (!btn) return;
+
+      var sync = function () {
+        var light = root.getAttribute("data-theme") === "light";
+        var label = light ? "Switch to dark mode" : "Switch to light mode";
+        btn.setAttribute("aria-label", label);
+        btn.setAttribute("title", label);
+      };
+      sync();
+
+      btn.addEventListener("click", function () {
+        var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch (e) {}
+        sync();
+      });
+    })();
+  </script>
 </body>
 </html>

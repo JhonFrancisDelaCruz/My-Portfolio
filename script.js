@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
 const typedEl = document.getElementById("typed");
 
 if (typedEl && !reduceMotion) {
-  const roles = typedEl.dataset.roles.split("|");
+  const roles = typedEl.dataset.roles.split("|").map((r) => r.trim()).filter(Boolean);
   let roleIndex = 0;
   let charIndex = roles[0].length;
   let deleting = true;
