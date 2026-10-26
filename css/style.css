@@ -120,7 +120,7 @@ body {
   pointer-events: none;
   z-index: 0;
 }
-*/
+
 .hero::before {
   width: 32vw;
   height: 32vw;
@@ -275,7 +275,6 @@ body {
   width: auto;
   max-width: 60%;
   z-index: 2;
-
 }
 
 /* ---------- JavaScript-driven effects ---------- */
@@ -359,14 +358,6 @@ body {
     align-items: stretch;
     min-height: 100svh;
     padding-top: 0;
-  }
-
-  .hero__circle {
-    width: 100%;
-    height: 58%;
-    left: 0;
-    top: 0;
-    border-radius: 0 0 50% 50% / 0 0 22% 22%;
   }
 
   .hero__visual {
@@ -499,186 +490,85 @@ body {
   border-radius: 999px;
 }
 
-/* ---------- Skills section ---------- */
-
-/* Row of cards */
-.skillsAndTechnologies {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-  gap: 30px;
-  padding: 40px 0;
-  color: var(--text);
-}
-
-/* ---------- Skill cards ---------- */
-.skillCard {
-  --accent-rgb: 34, 195, 34;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  width: 320px;
-  max-width: 100%;
-  padding: 28px;
-  text-align: left;
-  border-radius: 10px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.014), rgba(255, 255, 255, 0.03));
-  border: rgba(255, 255, 255, 0.021);
-  box-shadow:0 12px 40px rgba(20, 20, 20, 0.35),inset 0 1px 0 rgba(255, 255, 255, 0.22);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-  backdrop-filter: blur(16px) saturate(150%);
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.skillCard > * { position: relative; }
-
-.skillCard--front { --accent-rgb: 255, 255, 255; }
-.skillCard--back  { --accent-rgb: 255, 255, 255; }
-.skillCard--tools { --accent-rgb: 255, 255, 255; }
-
-.skillCard:hover {
-  transform: translateY(-6px);
-  border-color: rgba(var(--accent-rgb), 0.65);
-  box-shadow:
-    0 20px 50px rgba(60, 60, 60, 0.288),
-    0 0 0 1px rgba(var(--accent-rgb), 0.2);
-}
-
-.skillCard__top {
+/* ---------- Stack I rely on ---------- */
+.stackHead {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+  text-align: left;
 }
 
-.skillCard__tag {
-  padding: 4px 12px;
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: rgb(var(--accent-rgb));
-  background: rgba(var(--accent-rgb), 0.12);
-  border-radius: 999px;
-}
-
-.skillCard h3 {
-  margin: 0 0 8px;
-  font-size: 1.35rem;
-  font-weight: 800;
-  line-height: 1.2;
-}
-
-.skillCard p {
-  margin: 0 0 20px;
-  font-size: 0.9rem;
-  line-height: 1.55;
-  color: var(--text-soft);
-}
-
-.skillCard__label {
-  margin-bottom: 10px;
-  font-size: 0.7rem;
+.stackHead__title,
+.stackHead__link {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.509);
+  color: var(--text-soft);
+  text-decoration: none;
 }
 
-.skillCard__chips {
+.stackHead__link {
+  transition: color 0.2s ease;
+}
+
+.stackHead__link:hover {
+  color: var(--text);
+}
+
+.stackList {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  justify-content: flex-start;
+  gap: 0.75rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.skillCard__chips li {
-  display: flex;
+.stackPill {
+  display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 5px 12px;
-  font-size: 0.8rem;
+  gap: 0.6rem;
+  padding: 0.5rem 1.1rem 0.5rem 0.65rem;
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap;
   color: var(--text);
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.091);
-  border-radius: 20px;
+  background: color-mix(in srgb, var(--text) 4%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text) 14%, transparent);
+  border-radius: 999px;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
-.skillCard__chips li::before {
-  content:"";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgb(var(--accent-rgb));
+.stackPill:hover {
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+  border-color: color-mix(in srgb, var(--text) 35%, transparent);
+  transform: translateY(-2px);
 }
 
-@media (max-width: 640px) {
-  .skillCard {
-    width: 100%;
-  }
+.stackPill__icon {
+  width: 22px;
+  height: 22px;
+  background-color: currentColor;
+  -webkit-mask: var(--i) center / contain no-repeat;
+          mask: var(--i) center / contain no-repeat;
+  transition: background-color 0.2s ease;
 }
 
-/* ---------- Tech icons: one line, endless scroll ---------- */
-.stock {
-  overflow: hidden;
-  margin-top: 40px;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+/* Brand color on hover (--c per pill; --cl is an optional darker color for light mode) */
+.stackPill:hover .stackPill__icon {
+  background-color: var(--c, currentColor);
 }
 
-.stocks {
-  display: flex;
-  flex-wrap: nowrap;
-  width: max-content;
-  padding: 20px 0;
-  animation: scroll-icons 30s linear infinite;
-}
-
-.stock:hover .stocks {
-  animation-play-state: paused;
-}
-
-@keyframes scroll-icons {
-  to { transform: translateX(-50%); }
-}
-
-.btn1 {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 72px;
-  height: 72px;
-  margin-right: 17px;
-  padding: 12px;
-  border-radius: 10px;
-  background: #fefcfc;
-  transition: transform 0.2s ease;
-}
-
-.btn1:hover {
-  transform: translateY(-7px);
-}
-
-.btn1 img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+[data-theme="light"] .stackPill:hover .stackPill__icon {
+  background-color: var(--cl, var(--c, currentColor));
 }
 
 @media (max-width: 640px) {
-  .btn1 {
-    width: 56px;
-    height: 56px;
-    margin-right: 12px;
-    padding: 10px;
-  }
-
-  .stocks {
-    animation-duration: 22s;
-  }
+  .stackPill { font-size: 0.9rem; padding: 0.4rem 0.9rem 0.4rem 0.55rem; }
 }
 
 /* ---------- Footer ---------- */
@@ -826,41 +716,6 @@ body {
 [data-theme="light"] .section,
 [data-theme="light"] .footer {
   border-top-color: rgba(0, 0, 0, 0.08);
-}
-
-/* Skill cards */
-[data-theme="light"] .skillCard--front { --accent-rgb: 0, 0, 0; }
-[data-theme="light"] .skillCard--back  { --accent-rgb: 0, 0, 0; }
-[data-theme="light"] .skillCard--tools { --accent-rgb: 0, 0, 0; }
-
-
-[data-theme="light"] .skillCard {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.45));
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-}
-
-[data-theme="light"] .skillCard:hover {
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(var(--accent-rgb), 0.25);
-}
-
-[data-theme="light"] .skillCard__label {
-  color: rgba(0, 0, 0, 0.5);
-}
-
-[data-theme="light"] .skillCard__chips li {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Tech icons */
-[data-theme="light"] .btn1 {
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* ---------- Nav: auto-hide (desktop) ---------- */
@@ -1058,25 +913,22 @@ body {
   }
 }
 
-/* ---------- Reduced-motion: disable nav slide ---- */
+/* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
   .nav { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
   .nav--hidden { opacity: 1; transform: none; pointer-events: auto; }
   .nav__burger span { transition: none; }
-}
 
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   .btn { transition: none; }
   .btn:hover { transform: none; }
-  .btn1 { transition: none; }
-  .btn1:hover { transform: none; }
   body, .theme-toggle { transition: none; }
   .theme-toggle:hover { transform: none; }
-  .skillCard { transition: none; }
-  .skillCard:hover { transform: none; }
   .hero__cursor { animation: none; }
+
+  .stackPill, .stackHead__link { transition: none; }
+  .stackPill:hover { transform: none; }
 
   .js .hero__text > *,
   .js .hero__title,
@@ -1085,16 +937,4 @@ body {
     transform: none;
     transition: none;
   }
-
-  /* Static, wrapping icon grid instead of the scrolling strip */
-  .stocks {
-    animation: none;
-    width: auto;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .stocks .btn1 { margin-right: 0; }
-  .stocks .btn1[aria-hidden="true"] { display: none; }
 }

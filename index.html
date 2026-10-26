@@ -27,7 +27,6 @@
 </head>
 <body>
   <header class="hero" id="home">
-    <div class="hero__circle" aria-hidden="true"></div>
 
     <nav class="nav" aria-label="Main" id="mainNav">
       <a class="nav__logo" href="#home">Francis.dev</a>
@@ -59,13 +58,13 @@
         <span id="typed" aria-hidden="true" data-roles="Aspiring Software Engineer|Mobile App Learner|Java Programmer|Web Builder">Aspiring Software Engineer</span><span class="hero__cursor" aria-hidden="true"></span>
       </p>
 
-     <p className="hero__bio">
-      I'm an aspiring software engineer building web and mobile applications
-      with <span>React</span>, <span>Django</span>, and <span>Expo</span>.
-      With <span>Java</span> as my strongest language, I enjoy turning ideas
-      into functional projects while continuously learning and improving my skills.
-    </p>
-      
+      <p class="hero__bio">
+        I'm an aspiring software engineer building web and mobile applications
+        with <span>React</span>, <span>Django</span>, and <span>Expo</span>.
+        With <span>Java</span> as my strongest language, I enjoy turning ideas
+        into functional projects while continuously learning and improving my skills.
+      </p>
+
       <div class="hero__actions">
         <a class="btn btn--primary" href="#skills">View My Skills</a>
         <a class="btn" href="#contact">Contact Me</a>
@@ -99,90 +98,26 @@
     </section>
 
     <section id="skills" class="section">
-      <h2 class="section__title">Skills &amp; Technologies</h2>
-      <div class="skillsAndTechnologies">
-        <article class="skillCard skillCard--front">
-          <h3>Front-End</h3>
-          <p>I build responsive, user-friendly interfaces with clean layouts and a smooth user experience.</p>
-          <span class="skillCard__label">Stack</span>
-          <ul class="skillCard__chips">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>Tailwind CSS</li>
-            <li>React</li>
-            <li>React Native</li>
-            <li>TypeScript</li>
-          </ul>
-        </article>
-
-        <article class="skillCard skillCard--back">
-        
-          <h3>Back-End</h3>
-          <p>I develop application logic and work with databases to build functional apps and understand how systems work behind the scenes.</p>
-          <span class="skillCard__label">Stack</span>
-          <ul class="skillCard__chips">
-            <li>Java</li>
-            <li>Laravel</li>
-            <li>MySQL</li>
-            <li>Python</li>
-            <li>Django</li>
-            <li>PHP</li>
-
-          </ul>
-        </article>
-
-        <article class="skillCard skillCard--tools">
-         
-          <h3>Tools</h3>
-          <p>I use these tools to write code, manage projects, design interfaces, and deploy websites.</p>
-          <span class="skillCard__label">Toolbox</span>
-          <ul class="skillCard__chips">
-            <li>VS Code</li>
-            <li>Expo</li>
-            <li>NetBeans</li>
-            <li>Git &amp; GitHub</li>
-            <li>XAMPP</li>
-            <li>Figma</li>
-            <li>Scene Builder</li>
-            <li>Vercel</li>
-          </ul>
-        </article>
-
+      <div class="stackHead">
+        <h2 class="stackHead__title">Stack I rely on</h2>
+        <a class="stackHead__link" href="stack.html">View all <span aria-hidden="true">→</span></a>
       </div>
 
-      <div class="stock">
-  <div class="stocks">
-    <a class="btn1"><img src="assets/icons/html.jpg" alt="HTML"></a>
-    <a class="btn1"><img src="assets/icons/css.jpg" alt="CSS"></a>
-    <a class="btn1"><img src="assets/icons/js.jpg" alt="JavaScript"></a>
-    <a class="btn1"><img src="assets/icons/tailwind.jpg" alt="Tailwind CSS"></a>
-    <a class="btn1"><img src="assets/icons/java.jpg" alt="Java"></a>
-    <a class="btn1"><img src="assets/icons/php.jpg" alt="PHP"></a>
-    <a class="btn1"><img src="assets/icons/laravel.jpg" alt="Laravel"></a>
-    <a class="btn1"><img src="assets/icons/mysql.jpg" alt="MySQL"></a>
-    <a class="btn1"><img src="assets/icons/vscode.jpg" alt="VS Code"></a>
-    <a class="btn1"><img src="assets/icons/git.jpg" alt="Git"></a>
-    <a class="btn1"><img src="assets/icons/github.jpg" alt="GitHub"></a>
-    <a class="btn1"><img src="assets/icons/figma.jpg" alt="Figma"></a>
-    <a class="btn1"><img src="assets/icons/react.jpg" alt="React"></a>
-
-    <!-- Duplicate set for seamless scrolling -->
-    <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/html.jpg" alt=""></a>
-    <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/css.jpg" alt=""></a>
-    <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/js.jpg" alt=""></a>
-    <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/tailwind.jpg" alt=""></a>
-    <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/java.jpg" alt=""></a>
-    <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/php.jpg" alt=""></a>
-    <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/laravel.jpg" alt=""></a>
-    <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/mysql.jpg" alt=""></a>
-    <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/vscode.jpg" alt=""></a>
-    <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/git.jpg" alt=""></a>
-    <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/github.jpg" alt=""></a>
-    <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/figma.jpg" alt=""></a>
-     <a class="btn1" aria-hidden="true" tabindex="-1"><img src="assets/icons/react.jpg" alt=""></a>
-  </div>
-</div>
+      <!-- --c = brand color on hover, --cl = darker color for light mode (optional) -->
+      <ul class="stackList">
+        <li class="stackPill" style="--c:#ED8B00"><span class="stackPill__icon" style="--i:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTI4IDEyOCI+Cgk8cGF0aCBkPSJNMCAwaDEyOHYxMjhIMHoiIGZpbGw9Im5vbmUiIC8+Cgk8cGF0aCBmaWxsPSIjMDA3NGJkIiBkPSJNNDcuNjE3IDk4LjEycy00Ljc2NyAyLjc3NCAzLjM5NyAzLjcxYzkuODkyIDEuMTMgMTQuOTQ3Ljk2OCAyNS44NDUtMS4wOTJjMCAwIDIuODcxIDEuNzk1IDYuODczIDMuMzUxYy0yNC40MzkgMTAuNDctNTUuMzA4LS42MDctMzYuMTE1LTUuOTY5bS0yLjk4OC0xMy42NjVzLTUuMzQ4IDMuOTU5IDIuODIzIDQuODA1YzEwLjU2NyAxLjA5MSAxOC45MSAxLjE4IDMzLjM1NC0xLjZjMCAwIDEuOTkzIDIuMDI1IDUuMTMyIDMuMTMxYy0yOS41NDIgOC42NC02Mi40NDYuNjgtNDEuMzA5LTYuMzM2IiAvPgoJPHBhdGggZmlsbD0iI2VhMmQyZSIgZD0iTTY5LjgwMiA2MS4yNzFjNi4wMjUgNi45MzUtMS41OCAxMy4xNy0xLjU4IDEzLjE3czE1LjI4OS03Ljg5MSA4LjI2OS0xNy43NzdjLTYuNTU5LTkuMjE1LTExLjU4Ny0xMy43OTIgMTUuNjM1LTI5LjU4YzAgLjAwMS00Mi43MzEgMTAuNjctMjIuMzI0IDM0LjE4NyIgLz4KCTxwYXRoIGZpbGw9IiMwMDc0YmQiIGQ9Ik0xMDIuMTIzIDEwOC4yMjlzMy41MjkgMi45MS0zLjg4OCA1LjE1OWMtMTQuMTAyIDQuMjcyLTU4LjcwNiA1LjU2LTcxLjA5NC4xNzFjLTQuNDUxLTEuOTM4IDMuODk5LTQuNjI1IDYuNTI2LTUuMTkyYzIuNzM5LS41OTMgNC4zMDMtLjQ4NSA0LjMwMy0uNDg1Yy00Ljk1My0zLjQ4Ny0zMi4wMTMgNi44NS0xMy43NDMgOS44MTVjNDkuODIxIDguMDc2IDkwLjgxNy0zLjYzNyA3Ny44OTYtOS40NjhNNDkuOTEyIDcwLjI5NHMtMjIuNjg2IDUuMzg5LTguMDMzIDcuMzQ4YzYuMTg4LjgyOCAxOC41MTguNjM4IDMwLjAxMS0uMzI2YzkuMzktLjc4OSAxOC44MTMtMi40NzQgMTguODEzLTIuNDc0cy0zLjMwOCAxLjQxOS01LjcwNCAzLjA1M2MtMjMuMDQyIDYuMDYxLTY3LjU0NCAzLjIzOC01NC43MzEtMi45NThjMTAuODMyLTUuMjM5IDE5LjY0NC00LjY0MyAxOS42NDQtNC42NDNtNDAuNjk3IDIyLjc0N2MyMy40MjEtMTIuMTY3IDEyLjU5MS0yMy44NiA1LjAzMi0yMi4yODVjLTEuODQ4LjM4NS0yLjY3Ny43Mi0yLjY3Ny43MnMuNjg4LTEuMDc5IDItMS41NDNjMTQuOTUzLTUuMjU1IDI2LjQ1MSAxNS41MDMtNC44MjMgMjMuNzI1YzAtLjAwMi4zNTktLjMyNy40NjgtLjYxNyIgLz4KCTxwYXRoIGZpbGw9IiNlYTJkMmUiIGQ9Ik03Ni40OTEgMS41ODdTODkuNDU5IDE0LjU2MyA2NC4xODggMzQuNTFjLTIwLjI2NiAxNi4wMDYtNC42MjEgMjUuMTMtLjAwNyAzNS41NTljLTExLjgzMS0xMC42NzMtMjAuNTA5LTIwLjA3LTE0LjY4OC0yOC44MTVDNTguMDQxIDI4LjQyIDgxLjcyMiAyMi4xOTUgNzYuNDkxIDEuNTg3IiAvPgoJPHBhdGggZmlsbD0iIzAwNzRiZCIgZD0iTTUyLjIxNCAxMjYuMDIxYzIyLjQ3NiAxLjQzNyA1Ny0uOCA1Ny44MTctMTEuNDM2YzAgMC0xLjU3MSA0LjAzMi0xOC41NzcgNy4yMzFjLTE5LjE4NiAzLjYxMi00Mi44NTQgMy4xOTEtNTYuODg3Ljg3NGMwIC4wMDEgMi44NzUgMi4zODEgMTcuNjQ3IDMuMzMxIiAvPgo8L3N2Zz4K)"></span>Java</li>
+        <li class="stackPill" style="--c:#F7DF1E; --cl:#C9A800"><span class="stackPill__icon" style="--i:url(https://cdn.simpleicons.org/javascript)"></span>JavaScript</li>
+        <li class="stackPill" style="--c:#3776AB"><span class="stackPill__icon" style="--i:url(https://cdn.simpleicons.org/python)"></span>Python</li>
+        <li class="stackPill" style="--c:#61DAFB; --cl:#0A9FC2"><span class="stackPill__icon" style="--i:url(https://cdn.simpleicons.org/react)"></span>React</li>
+        <li class="stackPill" style="--c:#44B78B; --cl:#092E20"><span class="stackPill__icon" style="--i:url(https://cdn.simpleicons.org/django)"></span>Django</li>
+        <li class="stackPill"><span class="stackPill__icon" style="--i:url(https://cdn.simpleicons.org/expo)"></span>Expo</li>
+        <li class="stackPill" style="--c:#06B6D4"><span class="stackPill__icon" style="--i:url(https://cdn.simpleicons.org/tailwindcss)"></span>Tailwind CSS</li>
+        <li class="stackPill" style="--c:#4479A1"><span class="stackPill__icon" style="--i:url(https://cdn.simpleicons.org/mysql)"></span>MySQL</li>
+        <li class="stackPill" style="--c:#F05032"><span class="stackPill__icon" style="--i:url(https://cdn.simpleicons.org/git)"></span>Git</li>
+        <li class="stackPill"><span class="stackPill__icon" style="--i:url(https://cdn.simpleicons.org/github)"></span>GitHub</li>
+        <li class="stackPill" style="--c:#646CFF"><span class="stackPill__icon" style="--i:url(https://cdn.simpleicons.org/vite)"></span>Vite</li>
+        <li class="stackPill"><span class="stackPill__icon" style="--i:url(https://cdn.simpleicons.org/vercel)"></span>Vercel</li>
+      </ul>
     </section>
 
     <section id="projects" class="section">
@@ -221,7 +156,6 @@
         </div>
     </div>
 </div>
-
 
     </section>
 

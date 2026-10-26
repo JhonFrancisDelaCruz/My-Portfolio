@@ -1,0 +1,250 @@
+
+/* ==========================================================
+   stack.css: styles for stack.html
+   Needs css/style.css loaded first.
+   ========================================================== */
+
+.stackPage {
+  min-height: 100svh;
+  padding: calc(var(--nav-h) + 4rem) var(--gutter) 5rem;
+}
+
+/* ---------- Page header ---------- */
+.stackPage__header {
+  max-width: 44rem;
+  margin-bottom: 3rem;
+}
+
+.stackPage__eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.stackPage__title {
+  margin: 0 0 1rem;
+  font-family: var(--font-name);
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.15;
+}
+
+.stackPage__intro {
+  margin: 0;
+  max-width: 38rem;
+  font-size: 1.05rem;
+  color: var(--text-soft);
+}
+
+/* ---------- Category grid ---------- */
+.stackGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 1.25rem;
+}
+
+.stackGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 1.75rem;
+  background: color-mix(in srgb, var(--text) 3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--text) 10%, transparent);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.stackGroup:hover {
+  border-color: color-mix(in srgb, var(--text) 30%, transparent);
+  transform: translateY(-4px);
+}
+
+/* Wide groups span both columns on desktop */
+.stackGroup--wide {
+  grid-column: 1 / -1;
+}
+
+.stackGroup__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.stackGroup__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.stackGroup__count {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--text-soft);
+}
+
+.stackGroup__desc {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+}
+
+.stackGroup .stackList {
+  margin-top: auto;
+}
+
+/* ---------- Tech stack icons ---------- */
+/* Use <img> elements with online SVG URLs in your HTML.
+   This preserves each logo's original colors. */
+
+
+/* ---------- Tech stack icons ---------- */
+
+.stackPill__icon {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  object-fit: contain;
+  vertical-align: middle;
+
+  /* White logo by default */
+  filter: grayscale(1) brightness(0) invert(1);
+
+  transition:
+    filter 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Show original logo colors on hover */
+.stackPill:hover .stackPill__icon {
+  filter: none;
+  transform: scale(1.12);
+}
+
+/* Also show original colors when hovering directly over the logo */
+.stackPill__icon:hover {
+  filter: none;
+  transform: scale(1.12);
+}
+
+/* Keep images inside the icon size if a wrapper is used */
+span.stackPill__icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .stackPill__icon {
+    transition: none;
+  }
+
+  .stackPill:hover .stackPill__icon,
+  .stackPill__icon:hover {
+    transform: none;
+  }
+}
+
+
+/* ---------- Back link in the nav ---------- */
+.stackBack {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.stackBack:hover {
+  color: var(--text);
+}
+
+.stackBack:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 4px;
+}
+
+/* ---------- Load-in ---------- */
+.js .stackPage__header,
+.js .stackGroup {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: stack-rise 0.6s ease forwards;
+}
+
+.js .stackGroup:nth-child(1) {
+  animation-delay: 0.10s;
+}
+
+.js .stackGroup:nth-child(2) {
+  animation-delay: 0.18s;
+}
+
+.js .stackGroup:nth-child(3) {
+  animation-delay: 0.26s;
+}
+
+.js .stackGroup:nth-child(4) {
+  animation-delay: 0.34s;
+}
+
+.js .stackGroup:nth-child(5) {
+  animation-delay: 0.42s;
+}
+
+@keyframes stack-rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 640px) {
+  .stackPage {
+    padding-top: calc(var(--nav-h) + 2.5rem);
+    padding-bottom: 3rem;
+  }
+
+  .stackGroup {
+    padding: 1.25rem;
+  }
+
+  .stackBack {
+    font-size: 0.75rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .js .stackPage__header,
+  .js .stackGroup {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .stackGroup,
+  .stackBack,
+  .stackPill__icon {
+    transition: none;
+  }
+
+  .stackGroup:hover {
+    transform: none;
+  }
+
+  .stackPill:hover .stackPill__icon {
+    transform: none;
+  }
+}
