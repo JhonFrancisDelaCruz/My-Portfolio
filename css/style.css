@@ -1040,8 +1040,8 @@ body {
 
   .nav__links a:hover,
   .nav__links a.is-active {
-    background: rgba(12, 12, 12, 0.1);
-    color: black;
+    background: rgba(245, 241, 241, 0.057);
+    color: rgba(255, 255, 255, 0.498);
   }
 
   /* Keep logo & right controls in a single row */

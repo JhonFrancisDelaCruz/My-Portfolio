@@ -53,11 +53,10 @@
 
 .project-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(var(--accent-rgb), 0.65);
+  border-color: white;
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.45),
-    0 0 24px rgba(var(--accent-rgb), 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    0 20px 50px rgba(206, 202, 202, 0.098),
+    inset 0 1px 0 rgba(255, 255, 255, 0.178);
 }
 
 /* Screenshot: always the same shape, never stretched */
@@ -72,7 +71,7 @@
 }
 
 .project-card:hover img {
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 
 /* ---------- Text area ---------- */

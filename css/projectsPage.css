@@ -1,9 +1,3 @@
-/* ==========================================================
-   Project detail page (BudgetTracker.html)
-   Black & white only, square-ish corners.
-   Re-points the site's --green to white (dark) / black (light)
-   for this page only, so nothing else on the site changes.
-   ========================================================== */
 
 .project-body {
   --green: #fff;
@@ -28,13 +22,22 @@
   --card-bg: rgba(0, 0, 0, 0.03);
 }
 
-/* Square-ish corners and no color on the shared nav / buttons */
 .project-body .nav a:focus-visible,
 .project-body .btn:focus-visible { outline-color: var(--text); }
 
 .project-body .btn,
 .project-body .theme-toggle {
   border-radius: var(--radius);
+}
+
+.project-body .theme-toggle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .project-body .btn {
@@ -60,7 +63,6 @@
 }
 
 @media (max-width: 1024px) {
-  /* solid dropdown so the page doesn't show through the menu */
   .project-body .nav__links {
     background: var(--bg);
     border-bottom: 1px solid var(--line);
