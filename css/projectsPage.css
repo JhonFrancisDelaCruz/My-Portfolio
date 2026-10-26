@@ -1,92 +1,165 @@
 /* ==========================================================
    Project detail page (BudgetTracker.html)
-   Loaded AFTER style.css. It reuses the site's variables
-   (--bg, --text, --text-soft, --green, --font-name) and the
-   site's .nav, .btn and .footer, so dark and light mode
-   both work. Nothing global is redefined here: every rule
-   is scoped to .project-page.
+   Black & white only, square-ish corners.
+   Re-points the site's --green to white (dark) / black (light)
+   for this page only, so nothing else on the site changes.
    ========================================================== */
 
-.project-page {
-  --accent-rgb: 34, 195, 34; /* same as --green (#22c322) */
-  --glass-bg: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03));
-  --glass-border: rgba(255, 255, 255, 0.16);
-  --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+.project-body {
+  --green: #fff;
+  --green-btn: #fff;
+  --text: #fff;
+  --text-soft: #cfcfcf;
+  --bg: #0a0a0a;
+  --accent-rgb: 255, 255, 255;
+  --line: rgba(255, 255, 255, 0.22);
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --radius: 4px;
+}
 
-  max-width: 900px;
+[data-theme="light"] .project-body {
+  --green: #000;
+  --green-btn: #000;
+  --text: #000;
+  --text-soft: #444;
+  --bg: #f2f2f2;
+  --accent-rgb: 0, 0, 0;
+  --line: rgba(0, 0, 0, 0.25);
+  --card-bg: rgba(0, 0, 0, 0.03);
+}
+
+/* Square-ish corners and no color on the shared nav / buttons */
+.project-body .nav a:focus-visible,
+.project-body .btn:focus-visible { outline-color: var(--text); }
+
+.project-body .btn,
+.project-body .theme-toggle {
+  border-radius: var(--radius);
+}
+
+.project-body .btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+
+.project-body .btn:hover {
+  background: rgba(var(--accent-rgb), 0.08);
+  border-color: var(--text);
+}
+
+.project-body .btn--primary {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+
+.project-body .btn--primary:hover {
+  background: var(--text);
+  opacity: 0.85;
+}
+
+@media (max-width: 1024px) {
+  /* solid dropdown so the page doesn't show through the menu */
+  .project-body .nav__links {
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .project-body .nav__burger:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 2px;
+  }
+
+  .project-body .nav__links a:hover,
+  .project-body .nav__links a.is-active {
+    background: rgba(var(--accent-rgb), 0.08);
+  }
+}
+
+/* ---------- Page ---------- */
+.project-page {
+  max-width: 960px;
   margin: 0 auto;
   /* the navbar is fixed, so leave room for it */
-  padding: calc(var(--nav-h) + 3.5rem) 1.5rem 5rem;
+  padding: calc(var(--nav-h, 3.5rem) + 2.5rem) 1.5rem 5rem;
 }
 
-[data-theme="light"] .project-page {
-  --accent-rgb: 22, 128, 22; /* same as --green in light mode (#178a17) */
-  --glass-bg: linear-gradient(145deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.45));
-  --glass-border: rgba(0, 0, 0, 0.08);
-  --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+/* Heading kept for screen readers and search engines, not shown */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-/* ---------- Intro ---------- */
-.project-page__eyebrow {
-  margin: 0 0 0.75rem;
-  color: var(--green);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.project-page h1 {
-  margin: 0 0 1rem;
-  font-family: var(--font-name);
-  font-weight: 400;
-  font-size: clamp(2rem, 6vw, 3.25rem);
-  line-height: 1.15;
-}
-
-.project-page__lead {
-  max-width: 60ch;
-  margin: 0 0 1.75rem;
-  color: var(--text-soft);
-  font-size: 1.1rem;
-}
-
-.project-page__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-/* ---------- Screenshot ---------- */
+/* ---------- Screenshot: plain image, thin border ---------- */
 .project-page__shot {
-  margin: 2.5rem 0 0;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
+
+.project-page__shot a { display: block; }
 
 .project-page__shot img {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid var(--glass-border);
-  border-radius: 15px;
-  box-shadow: var(--glass-shadow);
+}
+
+.project-page__shot a:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: -2px;
+}
+
+/* ---------- Buttons under the screenshot ---------- */
+.project-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
 }
 
 /* ---------- Sections ---------- */
-.project-page section {
-  margin-top: 3.5rem;
-}
+.project-page section { margin-top: 3.5rem; }
 
 .project-page h2 {
-  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
   font-family: var(--font-name);
   font-weight: 400;
   font-size: clamp(1.4rem, 3vw, 1.8rem);
 }
 
-/* Features: each item is a glass card */
+.project-page h2::before {
+  content: "";
+  width: 4px;
+  height: 1.1em;
+  background: var(--text);
+}
+
+.project-page__lead {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* ---------- Features ---------- */
 .project-page__features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
   gap: 1rem;
   margin: 0;
   padding: 0;
@@ -94,22 +167,30 @@
 }
 
 .project-page__features li {
-  padding: 1.1rem 1.25rem;
-  background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-  backdrop-filter: blur(16px) saturate(150%);
-  border: 1px solid var(--glass-border);
-  border-radius: 15px;
-  box-shadow: var(--glass-shadow);
+  padding: 1.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   color: var(--text-soft);
   font-size: 0.95rem;
   line-height: 1.55;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .project-page__features li:hover {
-  transform: translateY(-4px);
-  border-color: rgba(var(--accent-rgb), 0.65);
+  transform: translateY(-3px);
+  border-color: var(--text);
+}
+
+.project-page__features svg {
+  display: block;
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-bottom: 0.85rem;
+  padding: 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
 }
 
 .project-page__features strong {
@@ -119,8 +200,8 @@
   font-size: 1.05rem;
 }
 
-/* Tools: green pills, same look as the cards on the home page */
-.project-page .project-tech ul {
+/* ---------- Tools ---------- */
+.project-page__tools {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -129,24 +210,35 @@
   list-style: none;
 }
 
-.project-page .project-tech li {
-  padding: 0.3rem 0.9rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  color: var(--green);
-  background: rgba(var(--accent-rgb), 0.12);
-  border: 1px solid rgba(var(--accent-rgb), 0.4);
+.project-page__tools li {
+  padding: 0.35rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 0.9rem;
 }
+
+/* ---------- Back link ---------- */
+.project-page__back {
+  margin: 3.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.project-page__back a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.project-page__back a:hover,
+.project-page__back a:focus-visible { border-bottom-color: var(--text); }
 
 /* ---------- Phones ---------- */
-@media (max-width: 800px) {
-  /* the navbar wraps onto two rows on small screens */
-  .project-page {
-    padding-top: 8rem;
-  }
-}
-
 @media (max-width: 480px) {
+  .project-page { padding-inline: 1rem; }
+
   .project-page__actions .btn {
     flex: 1 1 100%;
     text-align: center;
@@ -154,11 +246,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project-page__features li {
-    transition: none;
-  }
-
-  .project-page__features li:hover {
-    transform: none;
-  }
+  .project-page__features li { transition: none; }
+  .project-page__features li:hover { transform: none; }
 }

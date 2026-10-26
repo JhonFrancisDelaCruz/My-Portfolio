@@ -1,9 +1,3 @@
-/* ==========================================================
-   Project cards
-   Uses the site's own variables from style.css (--text, --text-soft,
-   --green), so dark and light mode both work. Nothing in :root is
-   redefined here, so it can't override your theme.
-   ========================================================== */
 
 .projects-grid,
 .project-card {
@@ -117,8 +111,8 @@
   border-radius: 999px;
   font-size: 0.78rem;
   color: var(--green);
-  background: rgba(var(--accent-rgb), 0.12);
-  border: 1px solid rgba(var(--accent-rgb), 0.4);
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.128);
 }
 
 /* ---------- Buttons (stay at the bottom of the card) ---------- */

@@ -29,10 +29,10 @@
   <header class="hero" id="home">
     <div class="hero__circle" aria-hidden="true"></div>
 
-    <nav class="nav" aria-label="Main">
+    <nav class="nav" aria-label="Main" id="mainNav">
       <a class="nav__logo" href="#home">Francis.dev</a>
       <div class="nav__right">
-        <ul class="nav__links">
+        <ul class="nav__links" id="navLinks">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
@@ -43,6 +43,11 @@
         <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
           <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
           <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+        </button>
+
+        <!-- Hamburger (mobile only) -->
+        <button class="nav__burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </nav>
@@ -76,7 +81,7 @@
 
     <div class="hero__visual">
       <h2 class="hero__title"></h2>
-      <img class="hero__photo" src="assets/images/Profile.png" alt="Portrait of Francis in a green polo shirt">
+      <img class="hero__photo" src="assets/images/Profile.png" width="848" height="1252" fetchpriority="high" alt="Portrait of Francis in a green polo shirt">
     </div>
   </header>
 
@@ -138,7 +143,7 @@
             <li>VS Code</li>
             <li>Expo</li>
             <li>NetBeans</li>
-            <li>Git & GitHub</li>
+            <li>Git &amp; GitHub</li>
             <li>XAMPP</li>
             <li>Figma</li>
             <li>Scene Builder</li>
@@ -192,7 +197,7 @@
         alt="Expense and Budget Tracker dashboard"
     >
     <div class="project-content">
-        <h3>Expense & Budget Tracker</h3>
+        <h3>Expense &amp; Budget Tracker</h3>
         <p>
             A responsive personal finance application
             for tracking income, managing expenses,
@@ -211,7 +216,7 @@
                rel="noopener noreferrer">
                 GitHub
             </a>
-            <a href="BudgetTracker.html" target="_blank" rel="noopener noreferrer">View more</a>
+            <a href="BudgetTracker.html">View more</a>
         </div>
     </div>
 </div>
@@ -236,13 +241,47 @@
   </footer>
 
   <script>
-    /* Darken the glass navbar a little once the page scrolls */
+    /* ── Nav: auto-hide on desktop (show on hover / at top), darken on scroll ── */
     (function () {
-      var nav = document.querySelector(".nav");
+      var nav = document.getElementById("mainNav");
       if (!nav) return;
-      var update = function () { nav.classList.toggle("is-scrolled", window.scrollY > 20); };
-      update();
-      window.addEventListener("scroll", update, { passive: true });
+
+      /* darken glass once scrolled */
+      var updateScrolled = function () {
+        nav.classList.toggle("is-scrolled", window.scrollY > 20);
+      };
+      updateScrolled();
+      window.addEventListener("scroll", updateScrolled, { passive: true });
+
+      /* auto-hide: only on pointer devices with enough width */
+      var mq = window.matchMedia("(hover: hover) and (min-width: 1025px)");
+
+      var showNav = function () { nav.classList.remove("nav--hidden"); };
+      var hideNav = function () {
+        if (nav.classList.contains("nav--open")) return;
+        nav.classList.add("nav--hidden");
+      };
+
+      var THRESHOLD = 80;
+      var onMouseMove = function (e) {
+        if (e.clientY <= THRESHOLD) showNav();
+      };
+
+      var bind = function () {
+        if (!mq.matches) { showNav(); return; }
+        nav.addEventListener("mouseenter", showNav);
+        nav.addEventListener("mouseleave", hideNav);
+        document.addEventListener("mousemove", onMouseMove);
+      };
+      var unbind = function () {
+        showNav();
+        nav.removeEventListener("mouseenter", showNav);
+        nav.removeEventListener("mouseleave", hideNav);
+        document.removeEventListener("mousemove", onMouseMove);
+      };
+
+      if (mq.matches) bind();
+      mq.addEventListener("change", function (e) { e.matches ? bind() : unbind(); });
     })();
   </script>
   <script>
@@ -275,8 +314,6 @@
         var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
         var progress = maxScroll > 0 ? Math.min(Math.max(y / maxScroll, 0), 1) : 0;
 
-        /* Reading line sits at 35% of the screen and slides to the bottom as you
-           reach the end of the page, so short last sections (Projects, Contact) still get their turn */
         var line = y + window.innerHeight * (0.35 + 0.65 * progress);
 
         var active = items[0];
@@ -319,6 +356,37 @@
         root.setAttribute("data-theme", next);
         try { localStorage.setItem("theme", next); } catch (e) {}
         sync();
+      });
+    })();
+  </script>
+  <script>
+    /* Hamburger menu */
+    (function () {
+      var burger = document.getElementById("navBurger");
+      var nav    = document.getElementById("mainNav");
+      var links  = document.getElementById("navLinks");
+      if (!burger || !nav || !links) return;
+
+      burger.addEventListener("click", function () {
+        var open = nav.classList.toggle("nav--open");
+        burger.setAttribute("aria-expanded", open ? "true" : "false");
+        burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      });
+
+      links.addEventListener("click", function (e) {
+        if (e.target.tagName === "A") {
+          nav.classList.remove("nav--open");
+          burger.setAttribute("aria-expanded", "false");
+          burger.setAttribute("aria-label", "Open menu");
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!nav.contains(e.target)) {
+          nav.classList.remove("nav--open");
+          burger.setAttribute("aria-expanded", "false");
+          burger.setAttribute("aria-label", "Open menu");
+        }
       });
     })();
   </script>

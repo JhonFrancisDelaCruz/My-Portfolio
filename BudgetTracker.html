@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Expense & Budget Tracker | Francis Dela Cruz</title>
-  <meta name="description" content="Expense & Budget Tracker: a responsive personal finance app for tracking income, managing expenses and monitoring monthly budgets. Built with React, Tailwind CSS and Vite.">
+  <title>Expense &amp; Budget Tracker | Francis Dela Cruz</title>
+  <meta name="description" content="Expense &amp; Budget Tracker: a responsive personal finance app for tracking income, managing expenses and monitoring monthly budgets. Built with React, Tailwind CSS and Vite.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,15 +20,16 @@
     }
   </script>
 
-  <!-- CSS STYLE SHEET -->
+  <!-- Site styles first, then this page's styles -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/projectsPage.css">
 </head>
-<body>
-  <nav class="nav" aria-label="Main">
+<body class="project-body">
+
+  <nav class="nav" aria-label="Main" id="mainNav">
     <a class="nav__logo" href="index.html#home">Francis.dev</a>
     <div class="nav__right">
-      <ul class="nav__links">
+      <ul class="nav__links" id="navLinks">
         <li><a href="index.html#home">Home</a></li>
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#skills">Skills</a></li>
@@ -40,49 +41,82 @@
         <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
       </button>
+
+      <!-- Hamburger (mobile only) -->
+      <button class="nav__burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
   <main class="project-page">
-    <header>
-      <p class="project-page__eyebrow">Project</p>
-      <h1>Expense &amp; Budget Tracker</h1>
-      <p class="project-page__lead">
-        A responsive personal finance application for tracking income,
-        managing expenses, and monitoring budgets.
-      </p>
-      <div class="project-page__actions">
-        <a class="btn btn--primary" href="https://expense-tracker-eta-drab.vercel.app/" target="_blank" rel="noopener noreferrer">View live project</a>
-        <a class="btn" href="https://github.com/JhonFrancisDelaCruz/Expense-Tracker" target="_blank" rel="noopener noreferrer">Source code</a>
-      </div>
+    <h1 class="visually-hidden">Expense &amp; Budget Tracker</h1>
 
-      <figure class="project-page__shot">
-        <img src="assets/projects/expense-tracker.png" alt="Expense and Budget Tracker dashboard showing balance, income, expenses and recent transactions">
-      </figure>
-    </header>
+    <!-- Screenshot in a browser frame -->
+    <figure class="project-page__shot">
+      <a href="https://expense-tracker-eta-drab.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open the live Expense and Budget Tracker in a new tab">
+        <img src="assets/projects/expense-tracker.png" width="1882" height="957" fetchpriority="high"
+             alt="Expense and Budget Tracker dashboard showing total balance, income, expenses, an October budget cap at 74% and a list of recent transactions">
+      </a>
+    </figure>
+
+    <div class="project-page__actions">
+      <a class="btn btn--primary" href="https://expense-tracker-eta-drab.vercel.app/" target="_blank" rel="noopener noreferrer">View live project</a>
+      <a class="btn" href="https://github.com/JhonFrancisDelaCruz/Expense-Tracker" target="_blank" rel="noopener noreferrer">Source code</a>
+    </div>
+
+    <section aria-labelledby="overview-title">
+      <h2 id="overview-title">Overview</h2>
+      <p class="project-page__lead">
+        A responsive personal finance app for tracking income, managing expenses
+        and keeping an eye on a monthly budget. It shows your balance, recent
+        activity and spending patterns on one dashboard, and works the same on a
+        phone as on a desktop.
+      </p>
+    </section>
 
     <section aria-labelledby="features-title">
       <h2 id="features-title">Features</h2>
       <ul class="project-page__features">
-        <li><strong>Dashboard</strong>Monthly balance, income and expenses at a glance.</li>
-        <li><strong>Transactions</strong>Add, filter and delete entries, with CSV export.</li>
-        <li><strong>Budgets</strong>Set a monthly cap and get an alert as you near it.</li>
-        <li><strong>Analytics</strong>Category breakdown and month-by-month spending bars.</li>
-        <li><strong>Light &amp; dark themes</strong>Follows your system setting, or choose your own.</li>
-        <li><strong>Works on any screen</strong>Sidebar on desktop, bottom tab bar on phones.</li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          <strong>Dashboard</strong>Monthly balance, income and expenses at a glance.
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4 3 8l4 4"/><path d="M3 8h14"/><path d="m17 20 4-4-4-4"/><path d="M21 16H7"/></svg>
+          <strong>Transactions</strong>Add, filter and delete entries, with CSV export.
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12A9 9 0 1 1 12 3v9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/></svg>
+          <strong>Budgets</strong>Set a monthly cap and get an alert as you near it.
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg>
+          <strong>Analytics</strong>Category breakdown and month-by-month spending bars.
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+          <strong>Light &amp; dark themes</strong>Follows your system setting, or choose your own.
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M6 18h6"/><path d="M9 14v4"/><rect x="16" y="9" width="6" height="11" rx="1.5"/></svg>
+          <strong>Works on any screen</strong>Sidebar on desktop, bottom tab bar on phones.
+        </li>
       </ul>
     </section>
 
     <section aria-labelledby="tools-title">
       <h2 id="tools-title">Tools</h2>
-      <div class="project-tech">
-        <ul>
-          <li>React</li>
-          <li>Tailwind CSS</li>
-          <li>Vite</li>
-        </ul>
-      </div>
+      <ul class="project-page__tools">
+        <li>React</li>
+        <li>Tailwind CSS</li>
+        <li>Vite</li>
+      </ul>
     </section>
+
+    <p class="project-page__back">
+      <a href="index.html#projects">&larr; Back to all projects</a>
+    </p>
   </main>
 
   <footer class="footer">
@@ -92,7 +126,7 @@
   <script>
     /* Darken the glass navbar a little once the page scrolls */
     (function () {
-      var nav = document.querySelector(".nav");
+      var nav = document.getElementById("mainNav");
       if (!nav) return;
       var update = function () { nav.classList.toggle("is-scrolled", window.scrollY > 20); };
       update();
@@ -120,6 +154,31 @@
         try { localStorage.setItem("theme", next); } catch (e) {}
         sync();
       });
+    })();
+  </script>
+  <script>
+    /* Hamburger menu */
+    (function () {
+      var burger = document.getElementById("navBurger");
+      var nav    = document.getElementById("mainNav");
+      var links  = document.getElementById("navLinks");
+      if (!burger || !nav || !links) return;
+
+      var close = function () {
+        nav.classList.remove("nav--open");
+        burger.setAttribute("aria-expanded", "false");
+        burger.setAttribute("aria-label", "Open menu");
+      };
+
+      burger.addEventListener("click", function () {
+        var open = nav.classList.toggle("nav--open");
+        burger.setAttribute("aria-expanded", open ? "true" : "false");
+        burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      });
+
+      links.addEventListener("click", function (e) { if (e.target.tagName === "A") close(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+      document.addEventListener("click", function (e) { if (!nav.contains(e.target)) close(); });
     })();
   </script>
 </body>
