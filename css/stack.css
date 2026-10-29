@@ -1,9 +1,4 @@
 
-/* ==========================================================
-   stack.css: styles for stack.html
-   Needs css/style.css loaded first.
-   ========================================================== */
-
 .stackPage {
   min-height: 100svh;
   padding: calc(var(--nav-h) + 4rem) var(--gutter) 5rem;
@@ -97,13 +92,6 @@
 .stackGroup .stackList {
   margin-top: auto;
 }
-
-/* ---------- Tech stack icons ---------- */
-/* Use <img> elements with online SVG URLs in your HTML.
-   This preserves each logo's original colors. */
-
-
-/* ---------- Tech stack icons ---------- */
 
 .stackPill__icon {
   display: inline-block;
