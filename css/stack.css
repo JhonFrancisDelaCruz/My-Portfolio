@@ -91,6 +91,12 @@
   flex-basis: 24px;
 }
 
+/* pure black pills in dark mode (hover keeps the black, only the border/glow change) */
+[data-theme="dark"] .stackGroup .stackPill,
+[data-theme="dark"] .stackGroup .stackPill:hover {
+  background: #00000000;
+}
+
 /* ---------- Back link in the nav ---------- */
 .stackBack {
   font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
@@ -135,7 +141,7 @@
   .stackGroup { padding: 1.5rem 0; }
 
   .stackGroup .stackPill {
-    height: 44px;
+    height: 40px;
     font-size: 1rem;
   }
 
