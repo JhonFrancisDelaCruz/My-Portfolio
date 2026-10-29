@@ -938,3 +938,111 @@ body {
     transition: none;
   }
 }
+
+/* =====================================================================
+   Stack logos (real images from assets/icons)
+   - dark mode  -> logos are white
+   - light mode -> logos are black
+   - hover      -> the original, full-color logo fades in
+   All filter lists use the same functions in the same order so they can animate.
+   ===================================================================== */
+:root {
+  --logo-mono:       grayscale(0) invert(0) brightness(0)    invert(1);
+  --logo-mono-js:    grayscale(1) invert(0) brightness(1.25) invert(0);
+  --logo-mono-xampp: grayscale(1) invert(1) brightness(2.4)  invert(0);
+  --logo-full:       grayscale(0) invert(0) brightness(1)    invert(0);
+}
+
+[data-theme="light"] {
+  --logo-mono:       grayscale(0) invert(0) brightness(0)    invert(0);
+  --logo-mono-js:    grayscale(1) invert(0) brightness(1.25) invert(1);
+  --logo-mono-xampp: grayscale(1) invert(1) brightness(2.4)  invert(1);
+}
+
+.stackPill__logo {
+  display: block;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  object-fit: contain;
+  filter: var(--logo-mono);
+  transition: filter 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.stackPill[data-logo="js"] .stackPill__logo    { filter: var(--logo-mono-js); border-radius: 3px; }
+.stackPill[data-logo="xampp"] .stackPill__logo { filter: var(--logo-mono-xampp); }
+
+/* hover: original logo colors + a little pop */
+.stackPill:hover .stackPill__logo,
+.stackPill__logo:hover {
+  filter: var(--logo-full);
+  transform: scale(1.25) rotate(-8deg);
+}
+
+/* GitHub (black) and Vercel (white) have no color of their own:
+   keep them readable on the current theme and just animate */
+.stackPill[data-logo="keep"]:hover .stackPill__logo,
+.stackPill[data-logo="keep"] .stackPill__logo:hover {
+  filter: var(--logo-mono);
+}
+
+/* soft glow in the brand color when hovering a pill */
+.stackPill:hover {
+  box-shadow: 0 8px 22px -8px color-mix(in srgb, var(--c, var(--text)) 55%, transparent);
+}
+
+[data-theme="light"] .stackPill:hover {
+  box-shadow: 0 8px 22px -8px color-mix(in srgb, var(--cl, var(--c, #000)) 45%, transparent);
+}
+
+.stackPill { transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.25s ease, box-shadow 0.25s ease; }
+
+
+/* =====================================================================
+   Scroll animations (driven by reveal.js)
+   ===================================================================== */
+.scrollBar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 200;
+  background: var(--text);
+  transform: scaleX(var(--p, 0));
+  transform-origin: left;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* hidden until scrolled into view, then rises in */
+.js [data-reveal]:not(.is-visible) { opacity: 0; }
+
+.js [data-reveal].is-visible {
+  animation: reveal-up 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  animation-delay: var(--d, 0s);
+}
+
+.js [data-reveal="left"].is-visible  { animation-name: reveal-left; }
+.js [data-reveal="scale"].is-visible { animation-name: reveal-scale; }
+
+/* stack pills pop in one after another */
+.js .stackList:not(.is-visible) .stackPill { opacity: 0; }
+
+.js .stackList.is-visible .stackPill {
+  animation: pill-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  animation-delay: calc(var(--n, 0) * 55ms);
+}
+
+@keyframes reveal-up    { from { opacity: 0; transform: translateY(32px); } }
+@keyframes reveal-left  { from { opacity: 0; transform: translateX(-32px); } }
+@keyframes reveal-scale { from { opacity: 0; transform: scale(0.94) translateY(20px); } }
+@keyframes pill-pop     { from { opacity: 0; transform: translateY(18px) scale(0.8); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal]:not(.is-visible),
+  .js .stackList:not(.is-visible) .stackPill { opacity: 1; }
+  .js [data-reveal].is-visible,
+  .js .stackList.is-visible .stackPill { animation: none; }
+  .stackPill__logo { transition: none; }
+  .stackPill:hover .stackPill__logo, .stackPill__logo:hover { transform: none; }
+  .scrollBar { display: none; }
+}
